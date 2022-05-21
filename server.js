@@ -39,7 +39,7 @@ mongoose
 /******************** STARTING THE SERVER *********************/
 // uisng envrionment variable that are defined in config.env file
 // important for heroku deployment as heroku will automatically set process.env.port variable
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
