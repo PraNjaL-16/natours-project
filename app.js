@@ -20,7 +20,6 @@ const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
-const exp = require('constants');
 
 /******************** START EXPRESS APP ***********************/
 const app = express();
