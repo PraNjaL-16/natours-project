@@ -21,6 +21,7 @@ const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+const bookingController = require('./controllers/bookingController');
 
 /******************** START EXPRESS APP ***********************/
 const app = express();
@@ -85,9 +86,17 @@ const limiter = rateLimit({
 // middleware function for "/api" route
 app.use('/api', limiter);
 
+/************** TO HANDLE STRIPE'S POST REQUEST ***************/
+// Stripe will then automatically post the original session data to this URL to whenever a checkout session has successfully completed
+app.post(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }), // to parse the body in a so-called raw format
+  bookingController.webhookCheckout
+);
+
 /********* LIMITING AMOUNT OF DATA COMING IN THE BODY *********/
 // BODY PARSER
-// to parse data from body of a incoming request (reading data from body into request.body)
+// to parse data from body of a incoming request to JSON object (reading data from body into request.body)
 // "express.json()" middleware to handle POST requests with Express & to get access of requests's body object
 // if there will be data of more than 10kb inside the body, then that will not be accepted
 app.use(
