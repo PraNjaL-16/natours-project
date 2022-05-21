@@ -1,6 +1,6 @@
-const catchAsync = require('./../utils/catchAsync');
-const AppError = require('./../utils/appError');
-const APIfeatures = require('./../utils/apiFeatures');
+const catchAsync = require('../utils/catchAsync');
+const AppError = require('../utils/appError');
+const APIfeatures = require('../utils/apiFeatures');
 
 /*********************************************************************/
 /********************* GENERIC HANDLER FUNCITONS *********************/
