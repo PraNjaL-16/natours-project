@@ -182,7 +182,7 @@ tourSchema.pre(/^find/, function (next) {
 // POST FIND HOOK/MIDDLEWARE (run after find() & findOne() methods)
 tourSchema.post(/^find/, function (docs, next) {
   // this keyword will point to currently processed query object
-  console.log(`Query took ${Date.now() - this.start} milliseconds`);
+  // console.log(`Query took ${Date.now() - this.start} milliseconds`);
 
   // have access of all the documents returned from the query
   // console.log(docs);

@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { showAlerts } from './alerts.js';
 
-console.log('hello from the client side login.js');
+// console.log('hello from the client side login.js');
 
 export const login = async (email, password) => {
   try {
@@ -10,7 +10,7 @@ export const login = async (email, password) => {
     // res will store the data that is coming back from the login API
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/users/login',
+      url: '/api/v1/users/login', // relative URL
       data: {
         // sending form data via HTTP request to the login API
         email,

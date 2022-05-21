@@ -12,7 +12,7 @@ import { logout } from './logout';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 
-console.log('hello from parcel');
+// console.log('hello from parcel');
 
 /********************** DOM ELEMENTS **********************/
 const mapBox = document.getElementById('map');

@@ -220,7 +220,7 @@ exports.restrictTo = (...roles) => {
     // roles will be a array
 
     // user object is added to request object by "protect" middleware function
-    console.log('role', req.user.role);
+    // console.log('role', req.user.role);
 
     // "user" is the field added to request body in the previous middleware function
     if (!roles.includes(req.user.role)) {

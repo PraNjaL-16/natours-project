@@ -59,7 +59,7 @@ const sendErrorProd = (err, req, res) => {
   if (req.originalUrl.startsWith('/api')) {
     // operational, (error occured in our application & created with the help our appError class) trusted error: send message to client
     if (err.isOperational) {
-      console.error('ERROR', err);
+      // console.error('ERROR', err);
 
       return res.status(err.statusCode).json({
         status: err.status,
@@ -69,7 +69,7 @@ const sendErrorProd = (err, req, res) => {
 
     // programming, 3rd party (mongoDB or mongoose etc.) or other unknown error: don't leak error details
     // 1. log error
-    console.error('ERROR', err);
+    // console.error('ERROR', err);
 
     // 2. send generic message
     return res.status(500).json({
@@ -89,7 +89,7 @@ const sendErrorProd = (err, req, res) => {
   }
 
   // programming, 3rd party (mongoDB or mongoose etc.) or other unknown error: don't leak error details
-  console.error('ERROR', err);
+  // console.error('ERROR', err);
   // will render the error.pug tempalte on the website
   return res.status(err.statusCode).render('error', {
     title: 'Something went wrong!',

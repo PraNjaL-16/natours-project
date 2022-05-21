@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { showAlerts } from './alerts.js';
 
-console.log('hello from the client side logout.js');
+// console.log('hello from the client side logout.js');
 
 export const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://127.0.0.1:3000/api/v1/users/logout',
+      url: '/api/v1/users/logout', // relative URL
     });
 
     // to send the invalid cookie to the server to logout the user

@@ -89,7 +89,7 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
 // to handle data coming from the form
 exports.updateUserData = catchAsync(async (req, res, next) => {
   // form data
-  console.log(req.body);
+  // console.log(req.body);
 
   // user object is added to request object in protect middleware
   const updatedUser = await User.findByIdAndUpdate(

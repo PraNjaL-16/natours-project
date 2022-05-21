@@ -1,5 +1,5 @@
 // this basically is a JavaScript file that we are going to integrate into our PUG tempalte and which will then run on the client side
-console.log('hello from the client side mapbox.js');
+// console.log('hello from the client side mapbox.js');
 
 export const displayMap = (locations) => {
   // to display map in our website using mapBox library

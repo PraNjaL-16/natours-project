@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 // each time whenever there is a uncaught excetion somewhere in our application, the global process object will emit an object called uncaughtExceptions and we can listen for this object using process.on() method
 process.on('uncaughtExceptions', (err) => {
   console.log('😤 UNCAUGHT EXCEPTIONS. Shutting down... 😤');
-  console.log(err.name, err.message);
+  // console.log(err.name, err.message);
 
   process.exit(1);
 });
@@ -50,7 +50,7 @@ const server = app.listen(port, () => {
 // each time whenever there is an unhandled rejection somewhere in our application, the global process object will emit an object called unhandledRejection and we can listen for this object using process.on() method
 process.on('unhandledRejection', (err) => {
   console.log('😤 UNHANDLED REJECTIONS. Shutting down... 😤');
-  console.log(err.name, err.message);
+  // console.log(err.name, err.message);
 
   // closing the server & shutting down the application
   server.close(() => {
