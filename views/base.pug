@@ -1,0 +1,38 @@
+doctype html  
+html 
+    head 
+        block head
+            meta(charset="UTF-8")
+            meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+            //- all static files are served from public folder as defined using express.static() method
+            link(rel="stylesheet" href="/css/style.css") 
+            link(rel="shortcut icon" type="image/png" href="/img/favicon.png")
+            link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300i,700")
+
+            title Natours | #{title}
+    body 
+        // HEADER
+        include _header
+        // HEADER ENDS
+
+        // CONTENT
+        //- to extend base template
+        block content
+            h1 This is a placefolder heading
+        // CONTENT ENDS
+
+        // FOOTER
+        include _footer
+        // FOOTER ENDS
+
+        //- adding a js file from client side to pug template or server side
+        //- script(src=`/js/login.js`)
+        //- script(src=`/js/mapbox.js`)
+
+        //- for stripe
+        script(src='https://js.stripe.com/v3/')
+
+        //- all client-side js files are bundled into single bundle.js file using parcel-bundler & then we have integrated this single bundeled client-side's js file into pug template or server side
+        script(src='/js/bundle.js')
+        
