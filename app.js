@@ -22,7 +22,13 @@ const viewRouter = require('./routes/viewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 const exp = require('constants');
 
+/******************** START EXPRESS APP ***********************/
 const app = express();
+
+/*********************** TRUST PROXY **************************/
+// make our application trust proxy's. So, again, request.secure doesn't work in the first place because Heroku acts as a proxy, which kind of redirects and modifies incoming requests
+// to set "x-forwarded-proto" header. So, we can later use it in autController
+app.enable('trust proxy');
 
 /**************************************************************/
 /********** GLOBAL MIDDLEWARES FOR THIS APPLICATION ***********/

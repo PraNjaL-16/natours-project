@@ -21,23 +21,20 @@ const signToken = (id) => {
   }));
 };
 
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
   // login newly created user (i.e. signing a Json web token and then sending it back to the user)
   // here user id is the payload for JWT token
   const token = signToken(user._id);
 
   const cookieOptions = {
     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000), // time in ms
-    // to specify that this cookie will only be created & sent to the client on an encrypted connection. So basically, only on HTTPS request. Will use it in production application
-    // secure: true,
+    // to test if a connection is secure or not, for application deployed on Heroku
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
     // to specify that this cookie cannot be accessed or modified in any way by the browser, to prevent cross-site scripting attacks. Its a secure way to create & store cookie on the browser.
     httpOnly: true,
   };
 
   // can see the cookie's data in "Cookies" section in postman
-
-  // making "secure" field to true for production application
-  if (process.env.NODE_ENV.trim() === 'production') cookieOptions.secure = true;
 
   // sending token via cookie to the client
   // cookie(key, value, options)
@@ -74,7 +71,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   await new Email(newUser, url).sendWelcome();
 
   // login newly created user (i.e. signing a Json web token and then sending it back to the user) & sending response to the client
-  createSendToken(newUser, 201, res);
+  createSendToken(newUser, 201, req, res);
 });
 
 /******************** USER AUTHENTICATION *********************/
@@ -104,7 +101,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
   // 3. if everything ok, send the token to client
   // login an existing user (i.e. signing a Json web token and then sending it back to the user) & sending response to the client
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });
 
 /********************** LOGOUT THE USER ***********************/
@@ -298,7 +295,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
   // 4. log the user in, send JWT
   // login an existing user (i.e. signing a Json web token and then sending it back to the user) & sending response to the client
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });
 
 /********** UPDATE PASSWORD OF CURRENTLY LOGGED-IN USER **********/
@@ -323,5 +320,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
   // 4. log user in, send JWT
   // login an existing user (i.e. signing a Json web token and then sending it back to the user) & sending response to the client
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });
