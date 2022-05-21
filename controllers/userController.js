@@ -1,7 +1,7 @@
 const sharp = require('sharp');
 const AppError = require('../utils/appError');
 const upload = require('../utils/imageUpload');
-const User = require('../models/userModel');
+const User = require('../models/usermodel');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('./handlerFactory');
 
