@@ -10,6 +10,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -29,25 +30,45 @@ const app = express();
 // to set "x-forwarded-proto" header. So, we can later use it in autController
 app.enable('trust proxy');
 
-/**************************************************************/
-/********** GLOBAL MIDDLEWARES FOR THIS APPLICATION ***********/
-// all middleware functions are executed in order as they are in the code or middleware is added to the middleware stack in the order in which it is defined in the code
-
 /************* SETTING UP TEMPLATE ENGINE: PUG  ****************/
 // to tell express that we are using PUG template engine (also called view engine)
 app.set('view engine', 'pug');
 // to define where the views are actually located in our file system
 app.set('views', path.join(__dirname, 'views'));
 
-/******************** to serve static files ********************/
+/**************************************************************/
+/********** GLOBAL MIDDLEWARES FOR THIS APPLICATION ***********/
+// all middleware functions are executed in order as they are in the code or middleware is added to the middleware stack in the order in which it is defined in the code
+
+/******************** TO SERVE STATIC FILES ********************/
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*************** SETTING SECURITY HTTP HEADERS *****************/
 // seting security http headers
+// can see newly added headers from the headers section in postman
 // using helmet npm package, helmet() will return a middleware function
 app.use(helmet());
 
-// can see newly added headers from the headers section in postman
+/********************** IMPLEMENTING CORS **********************/
+// STEP 1: will only work simple requests
+// "cors()" will return a middleware function which is then gonna add a couple of different headers to our response
+// enabling CORS for all incoming requests i.e for our entire APIs, can also implement CORS for specific route
+app.use(cors());
+
+/* 
+// enabling CORS for a specific domain
+app.use(
+  cors({
+    origin: 'https://www.example.com/',
+  })
+); */
+
+// STEP 2: for non-simple requests
+// this is very similar to doing get(), post(), delete(), patch() and all these requests So options() is not to set any options on our application, it's really just another HTTP method that we can respond to
+// And so again, in this case we need to respond to it because the browser sends an option request when there is a preflight phase
+// options('route', handler)
+app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
 
 /***************** IMPLEMENTING RATE LIMITING ******************/
 // limits requestes from same API
@@ -152,6 +173,10 @@ app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/bookings', bookingRouter);
+
+/* 
+// enabling CORS only for a specific route
+app.use('/api/v1/bookings', bookingRouter); */
 
 /************** HANDLING ALL THE UN-DEFINED ROUTES **************/
 // this should be always defined at the end of all other routes. So, that control will only reach here after matching current request object with all the previously defined routes. If any of the previous routes matches with current request object then control will not reach here & if any of the previous routes dones not matches with current request object then control will reach here & response will be sent to the client
