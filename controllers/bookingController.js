@@ -35,7 +35,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     // this custome field is gonna allow us to pass in some data about the session that we are currently creating. And that's important because later once the purchase was successful, we will then get access to the session object again. And by then, we can access the data passed to this field
     client_reference_id: req.params.tourId,
     // product details
-    display_items: [
+    line_items: [
       {
         name: `${tour.name} Tour`,
         description: tour.summary,
