@@ -84,6 +84,19 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
   });
 });
 
+// to show alert after sucessful payment via stripe
+exports.alerts = (req, res, next) => {
+  const { alert } = req.query;
+
+  if (alert === 'booking') {
+    // all pug template will have access to locals variable i.e to alert variable in this case
+    res.locals.alert =
+      'Your booking was successful! Please check your mail for a confirmation. If your booking does not show up here immediately, please come back later.';
+  }
+
+  next();
+};
+
 /* 
 // instead of directly sending form data to an endpoint, we are using API to update user data
 // to handle data coming from the form

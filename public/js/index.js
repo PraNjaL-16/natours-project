@@ -11,10 +11,12 @@ import { login } from './login';
 import { logout } from './logout';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
+import { showAlerts } from './alerts.js';
 
 // console.log('hello from parcel');
 
 /********************** DOM ELEMENTS **********************/
+const alertElement = document.querySelector('body');
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
 const logoutBtn = document.querySelector('.nav__el--logout');
@@ -107,5 +109,14 @@ if (bookBtn) {
     const { tourId } = e.target.dataset;
 
     bookTour(tourId);
+
+    e.target.textContent = 'BOOK TOUR NOW!';
   });
+}
+
+// to show alert after sucessful payment via stripe
+if (alertElement.dataset.alert) {
+  // reading data from HTML data attribute
+  const message = alertElement.dataset.alert;
+  showAlerts('success', message, 20);
 }

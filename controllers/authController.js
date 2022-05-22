@@ -198,7 +198,7 @@ exports.isLoggedIn = async (req, res, next) => {
       }
 
       // THERE IS A LOGGED IN USER. So, making that user accessible to our pug templates
-      res.locals.user = currentUser; // pug template will have access to locals variable i.e to user variable
+      res.locals.user = currentUser; // all pug template will have access to locals variable i.e to user variable
       return next();
     }
   } catch (err) {

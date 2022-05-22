@@ -12,7 +12,8 @@ const router = express.Router();
 // this middleware function will be applied over all the routes that comes after this point
 // router.use(authController.isLoggedIn);
 
-// get() is used to render the page in the browser
+// this is a middleware function, which will basically run for each and every single request that's coming into this router, so basically for all the requests to our website
+router.use(viewController.alerts);
 
 /* 
 // this route will also gets hit whenever there is a successfull paytment using stripe as this routes url is specied in the stripe session's "success_url". So, whenever this route gets hit after a successfull paytment using stripe we will make a booking document in the DB
@@ -25,6 +26,7 @@ router.get(
 ); 
 */
 
+// get() is used to render the page in the browser
 router.get('/', authController.isLoggedIn, viewController.getOverview);
 router.get('/tour/:slug', authController.isLoggedIn, viewController.getTour);
 router.get('/login', authController.isLoggedIn, viewController.getloginForm);

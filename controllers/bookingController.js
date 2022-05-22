@@ -26,7 +26,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     */
 
     // user will be re-directed to this url as soon the transaction gets successfuly completed
-    success_url: `${req.protocol}://${req.get('host')}/my-tours`,
+    success_url: `${req.protocol}://${req.get('host')}/my-tours?alert=booking`,
 
     // user will be re-directed to this url if transaction gets cancelled completed
     cancel_url: `${req.protocol}://${req.get('host')}/tour/${tour.slug}`,
