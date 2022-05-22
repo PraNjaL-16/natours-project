@@ -109,8 +109,6 @@ if (bookBtn) {
     const { tourId } = e.target.dataset;
 
     bookTour(tourId);
-
-    e.target.textContent = 'BOOK TOUR NOW!';
   });
 }
 
