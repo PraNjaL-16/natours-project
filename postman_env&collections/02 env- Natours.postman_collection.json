@@ -512,7 +512,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"hellotest1\",\r\n    \"email\": \"hellotest1@gmail.com\",\r\n    \"password\": \"pass1234\",\r\n    \"passwordConfirm\": \"pass1234\",\r\n    \"role\": \"guide\"\r\n}",
+							"raw": "{\r\n    \"name\": \"hellotest1\",\r\n    \"email\": \"hellotest1@gmail.com\",\r\n    \"password\": \"********\",\r\n    \"passwordConfirm\": \"********\",\r\n    \"role\": \"guide\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -562,7 +562,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"normal@gmail.com\",\r\n    \"password\": \"newpass1234\"\r\n}",
+							"raw": "{\r\n    \"email\": \"normal@gmail.com\",\r\n    \"password\": \"********\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -630,7 +630,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"newpass123\",\r\n    \"passwordConfirm\": \"newpass123\"\r\n}",
+							"raw": "{\r\n    \"password\": \"********\",\r\n    \"passwordConfirm\": \"********\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -681,7 +681,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"passwordCurrent\": \"pass1234\",\r\n    \"password\": \"newpass1234\",\r\n    \"passwordConfirm\": \"newpass1234\"\r\n}",
+							"raw": "{\r\n    \"passwordCurrent\": \"********\",\r\n    \"password\": \"********\",\r\n    \"passwordConfirm\": \"********\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

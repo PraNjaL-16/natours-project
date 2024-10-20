@@ -527,7 +527,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"pranjal\",\r\n    \"email\": \"passChanged@gmail.com\",\r\n    \"password\": \"pass1234\",\r\n}",
+							"raw": "{\r\n    \"name\": \"pranjal\",\r\n    \"email\": \"passChanged@gmail.com\",\r\n    \"password\": \"********\",\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -560,7 +560,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"pass1234\"\r\n}",
+							"raw": "{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"********\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

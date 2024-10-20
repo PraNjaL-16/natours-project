@@ -730,7 +730,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Prod mail\",\r\n    \"email\": \"pranjal@mailsac.com\",\r\n    \"password\": \"pass1234\",\r\n    \"passwordConfirm\": \"pass1234\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Prod mail\",\r\n    \"email\": \"pranjal@mailsac.com\",\r\n    \"password\": \"********\",\r\n    \"passwordConfirm\": \"********\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -877,7 +877,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"test1234\",\r\n    \"passwordConfirm\": \"test1234\"\r\n}",
+							"raw": "{\r\n    \"password\": \"********\",\r\n    \"passwordConfirm\": \"********\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -928,7 +928,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"passwordCurrent\": \"pass1234\",\r\n    \"password\": \"newpass1234\",\r\n    \"passwordConfirm\": \"newpass1234\"\r\n}",
+							"raw": "{\r\n    \"passwordCurrent\": \"********\",\r\n    \"password\": \"********\",\r\n    \"passwordConfirm\": \"********\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
